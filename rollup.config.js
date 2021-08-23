@@ -13,7 +13,7 @@ export default [
       file: 'dist/matrix.js',
       format: 'iife',
       name: 'matrix',
-      sourcemap: 'inline'
+      sourcemap: false
     },
     plugins: [
       babel({
@@ -33,7 +33,7 @@ export default [
     output: {
       file: 'dist/matrix.mjs',
       format: 'es',
-      sourcemap: 'inline'
+      sourcemap: false
     
     },
     plugins: [
