@@ -1,0 +1,19 @@
+{
+  "name": "cmatrix",
+  "version": "0.1.0",
+  "description": "",
+  "main": "matrix.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcubic/cmatrix.git"
+  },
+  "keywords": ["canvas", "animation", "effect", "matrix", "movie"],
+  "author": "Jakub T. Jankiewicz <jcubic@onet.pl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcubic/cmatrix/issues"
+  },
+  "homepage": "https://github.com/jcubic/cmatrix#readme"
+}
