@@ -1,19 +1,34 @@
 {
   "name": "cmatrix",
   "version": "0.1.0",
-  "description": "",
-  "main": "matrix.js",
+  "description": "Matrix effect animation on a canvas",
+  "main": "dist/matrix.js",
+  "jsnext:main": "dist/matrix.mjs",
+  "browser": "dist/matrix.js",
   "scripts": {
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jcubic/cmatrix.git"
   },
-  "keywords": ["canvas", "animation", "effect", "matrix", "movie"],
+  "keywords": [
+    "canvas",
+    "animation",
+    "effect",
+    "matrix",
+    "movie"
+  ],
   "author": "Jakub T. Jankiewicz <jcubic@onet.pl>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jcubic/cmatrix/issues"
   },
-  "homepage": "https://github.com/jcubic/cmatrix#readme"
+  "homepage": "https://github.com/jcubic/cmatrix#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
 }

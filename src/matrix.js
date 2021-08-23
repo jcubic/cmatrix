@@ -126,7 +126,7 @@ function width() {
   // why -1 ?
   // without this there is horizontal scrollbar
   // I have no idea what is causing this
-  return window.innerWidth - 1;
+  return window.innerWidth;
 }
 
 // ---------------------------------------------------------------
