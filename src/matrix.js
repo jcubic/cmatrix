@@ -1,7 +1,13 @@
-// Matrix effect on a Canvas
-// Copyright (c) Jakub T. Jankiewicz <https://jcubic.pl>
-// Released under MIT license
-
+/**
+ * Matrix effect on a Canvas https://jcubic.github.io/cmatrix/
+ *
+ * Copyright (c) Jakub T. Jankiewicz <https://jcubic.pl>
+ * Released under MIT license
+ *
+ * The code was started at this Codepen https://codepen.io/jcubic/pen/rNeNwgB
+ * And was based on code by Michael Goodman https://codepen.io/goodmanmr1/pen/jpPeRR
+ *
+ */
 var katagana = gen_unicode(0x30A1, 0x30F6);
 var hiragana = gen_unicode(0x3041, 0x3096);
 
