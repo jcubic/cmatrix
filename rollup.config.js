@@ -1,5 +1,10 @@
 import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
+import { readFileSync } from 'fs';
+
+const date = (new Date()).toUTCString();
+
+const banner = readFileSync('./src/banner.js').toString().trim().replace(/\{\{DATE\}\}/, date);
 
 export default [
   {
@@ -19,15 +24,15 @@ export default [
       terser({
         ecma: 2015,
         mangle: { toplevel: false },
-        output: { quote_style: 1 }
+        format: { preamble: banner }
       })
     ]
   },
   {
     input: 'src/matrix.js',
     output: {
-      format: 'es',
       file: 'dist/matrix.mjs',
+      format: 'es',
       sourcemap: 'inline'
     
     },
@@ -40,7 +45,7 @@ export default [
           toplevel: true,
           unsafe_arrows: true
         },
-        output: { quote_style: 1 }
+        format: { preamble: banner }
       })
     ]
   }
