@@ -2,21 +2,21 @@
 <html>
 <body>
 <style>
-body, canvas {
-  margin: 0
-}
-canvas {
-  display: block;
-}
+ body, canvas {
+     margin: 0;
+ }
+ canvas {
+     display: block;
+ }
 </style>
 <canvas id="canvas"></canvas>
-<script  src="dist/matrix.mjs"></script>
 <script type="module">
-import matrix from './dist/matrix.mjs';
-(function run() {
-    return matrix(canvas, {
-        chars: ['0', '1'],
-        font_size: 20
-    }).then(run);
-})();
+ import matrix from './dist/matrix.mjs';
+ matrix(canvas, {
+     chars: ['0', '1'],
+     color: '#000',
+     background: 'rgba(255,255,255, 0.05)',
+     exit: false,
+     font_size: 20
+ })
 </script>
