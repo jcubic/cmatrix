@@ -1,7 +1,7 @@
 /**
  * Matrix effect on a Canvas https://jcubic.github.io/cmatrix/
  *
- * Copyright (c) Jakub T. Jankiewicz <https://jcubic.pl/me>
+ * Copyright (c) 2021 Jakub T. Jankiewicz <https://jcubic.pl/me>
  * Released under MIT license
  *
  * The code was started at this Codepen https://codepen.io/jcubic/pen/rNeNwgB
@@ -13,11 +13,13 @@ var hiragana = gen_unicode(0x3041, 0x3096);
 
 // ---------------------------------------------------------------
 class Matrix {
-  constructor(canvas, { chars = null, font_size = 14, width, height } = {}) {
+  constructor(canvas, { chars = null, font_size = 14, width, height, color, background } = {}) {
     this._canvas = canvas;
     this._ctx = canvas.getContext('2d');
     this._font_size = font_size;
     this._drops = [];
+    this._color = color;
+    this._background = background;
     this._chars = chars ? chars : katagana.concat(hiragana);
     this.resize(width, height);
   }
@@ -51,7 +53,6 @@ class Matrix {
   resize(width, height) {
     this._width = width;
     this._height = height;
-    // ref: https://blog.codepen.io/2013/07/29/full-screen-canvas/
     this._canvas.width = width;
     setTimeout(() => {
       this._canvas.height = height;
@@ -60,9 +61,9 @@ class Matrix {
     this._columns = Math.round(width / this._font_size);
   }
   clear() {
-    this._ctx.fillStyle = 'rgba(0, 0,0,0.05)';
+    this._ctx.fillStyle = this._background;
     this._ctx.fillRect(0, 0, this._width, this._height);
-    this._ctx.fillStyle = '#0F0';
+    this._ctx.fillStyle = this._color;
     this._ctx.font = this._font_size + "px monospace";
   }
   render() {
@@ -83,32 +84,40 @@ class Matrix {
 // ---------------------------------------------------------------
 // :: Init code
 // ---------------------------------------------------------------
-export default function matrix(canvas, { chars = null, font_size = 14 } = {}) {
+export default function matrix(canvas, { chars = null,
+                                         font_size = 14,
+                                         exit = true,
+                                         color = '#0F0',
+                                         background = 'rgba(0, 0,0,0.05)'} = {}) {
 
-    const matrix = new Matrix(canvas, {
-        font_size: font_size,
-        chars,
-        width: width(),
-        height: height()
-    });
+  const matrix = new Matrix(canvas, {
+    font_size: font_size,
+    chars,
+    color,
+    background,
+    width: width(),
+    height: height()
+  });
 
-    window.addEventListener('resize', e => {
-        matrix.resize(width(), height());
-    });
+  window.addEventListener('resize', e => {
+    matrix.resize(width(), height());
+  });
 
+  canvas.classList.add('running');
+  matrix.start();
+
+  if (exit) {
     return new Promise(function(resolve) {
-        window.addEventListener('keydown', function(e) {
-            var key = e.key.toLowerCase();
-            if (key === 'q' || key === 'escape') {
-                matrix.stop();
-                canvas.classList.remove('running');
-                setTimeout(resolve, 0);
-            }
-        });
-
-        canvas.classList.add('running');
-        matrix.start();
+      window.addEventListener('keydown', function(e) {
+        var key = e.key.toLowerCase();
+        if (key === 'q' || key === 'escape') {
+          matrix.stop();
+          canvas.classList.remove('running');
+          setTimeout(resolve, 0);
+        }
+      });
     });
+  }
 };
 
 // ---------------------------------------------------------------
@@ -129,9 +138,6 @@ function rnd(array) {
 
 // ---------------------------------------------------------------
 function width() {
-  // why -1 ?
-  // without this there is horizontal scrollbar
-  // I have no idea what is causing this
   return window.innerWidth;
 }
 
