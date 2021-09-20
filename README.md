@@ -45,6 +45,7 @@ By default, `q` and `ESC` exit from the effect.
 ## Changelog
 ### 0.2.0
 * add `exit`/`color`/`background` options
+
 ### 0.1.1 / 0.1.0
 * Initial version
 
