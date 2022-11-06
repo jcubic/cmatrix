@@ -1,3 +1,5 @@
 *.html
 rollup.config.js
 src
+.htaccess
+*~
