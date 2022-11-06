@@ -11,9 +11,10 @@
 npm install cmatrix
 ```
 
-## Demo
+## Demos
 * [ES Module](https://jcubic.github.io/cmatrix/demo.mjs.html) (custom characters)
 * [ES5](https://jcubic.github.io/cmatrix/demo.html)
+* [Matrix Font](https://jcubic.github.io/cmatrix/custom-font.html)
 
 ## Usage
 
@@ -32,8 +33,15 @@ matrix(canvasElement, {
 }).
 ```
 
+```javascript
+matrix(canvasElement, {
+  chars: matrix.range(0x30A1, 0x30F6).concat(matrix.range(0x0030, 0x0039)),
+  font_size: 16
+}).
+```
+
 The matrix function return a Promise that is resolved when exit.
-By default, `q` and `ESC` exit from the effect.
+By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable ending the animation.
 
 [Repo Link](https://github.com/jcubic/cmatrix)
 
@@ -46,9 +54,13 @@ By default, `q` and `ESC` exit from the effect.
 * `font_size` - number the default is 14.
 * `font` - name of the font (default `monospace`).
 
+## Static methods
+* `matrix.range(start_number, end_number)` - returns characters created from given range. Use `matrix.range(0x30A1, 0x30F6)` for [Katagana](https://en.wikipedia.org/wiki/Katakana) characters and `matrix.range(0x3041, 0x3096)` for [Hiragana](https://en.wikipedia.org/wiki/Hiragana), they look nice as matrix rain.
+
 ## Changelog
 ### 0.3.0
 * add support for custom font
+
 ### 0.2.0
 * add `exit`/`color`/`background` options
 
