@@ -72,5 +72,5 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 * Custom matrix font taken from [Realistic Matrix effect](https://github.com/Rezmason/matrix).
 
 ## License
-Copyright (C) 2021 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
+Copyright (C) 2022 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
 Released under MIT License
