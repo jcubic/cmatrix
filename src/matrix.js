@@ -13,13 +13,22 @@ var hiragana = gen_unicode(0x3041, 0x3096);
 
 // ---------------------------------------------------------------
 class Matrix {
-  constructor(canvas, { chars = null, font_size = 14, width, height, color, background } = {}) {
+  constructor(canvas, {
+    chars = null,
+    font_size = 14,
+    width,
+    height,
+    font = 'monospace',
+    color,
+    background
+  } = {}) {
     this._canvas = canvas;
     this._ctx = canvas.getContext('2d');
     this._font_size = font_size;
     this._drops = [];
     this._color = color;
     this._background = background;
+    this._font = font;
     this._chars = chars ? chars : katagana.concat(hiragana);
     this.resize(width, height);
   }
@@ -64,7 +73,7 @@ class Matrix {
     this._ctx.fillStyle = this._background;
     this._ctx.fillRect(0, 0, this._width, this._height);
     this._ctx.fillStyle = this._color;
-    this._ctx.font = this._font_size + "px monospace";
+    this._ctx.font = this._font_size + "px " + this._font;
   }
   render() {
     this.clear();
@@ -81,18 +90,22 @@ class Matrix {
   }
 }
 
+
+
 // ---------------------------------------------------------------
 // :: Init code
 // ---------------------------------------------------------------
-export default function matrix(canvas, { chars = null,
+function matrix(canvas, { chars = null,
                                          font_size = 14,
                                          exit = true,
+                                         font = 'monospace',
                                          color = '#0F0',
                                          background = 'rgba(0, 0,0,0.05)'} = {}) {
 
   const matrix = new Matrix(canvas, {
     font_size: font_size,
     chars,
+    font,
     color,
     background,
     width: width(),
@@ -120,6 +133,9 @@ export default function matrix(canvas, { chars = null,
   }
 };
 
+
+export default matrix;
+
 // ---------------------------------------------------------------
 // :: Utils
 // ---------------------------------------------------------------
@@ -130,6 +146,8 @@ function gen_unicode(start, end) {
   }
   return chars;
 }
+
+matrix.range = gen_unicode;
 
 // ---------------------------------------------------------------
 function rnd(array) {

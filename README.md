@@ -1,5 +1,8 @@
 # CMatrix - Matrix effect in JavaScript
 
+[![npm](https://img.shields.io/badge/npm-0.3.0-blue.svg)](https://www.npmjs.com/package/cmatrix)
+[![LICENSE MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jcubic/cmatrix/blob/master/LICENSE)
+
 [Matrix animation effect in JavaScript using Canvas](https://jcubic.github.io/cmatrix/)
 
 ## Installation
@@ -41,8 +44,11 @@ By default, `q` and `ESC` exit from the effect.
 * `color` - default color - default is `#0f0`.
 * `background` - by default it's set `rgba(0, 0, 0, 0.05)` alpha is required for the effect to look good.
 * `font_size` - number the default is 14.
+* `font` - name of the font (default `monospace`).
 
 ## Changelog
+### 0.3.0
+* add support for custom font
 ### 0.2.0
 * add `exit`/`color`/`background` options
 
@@ -51,6 +57,7 @@ By default, `q` and `ESC` exit from the effect.
 
 ## Acknowledge
 * The base code and initial idea came from this [Code Pen Demo](https://codepen.io/goodmanmr1/pen/jpPeRR) by Michael Goodman.
+* Custom matrix font taken from [Realistic Matrix effect](https://github.com/Rezmason/matrix).
 
 ## License
 Copyright (C) 2021 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
