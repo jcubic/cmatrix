@@ -1,6 +1,6 @@
 # CMatrix - Matrix effect in JavaScript
 
-[![npm](https://img.shields.io/badge/npm-0.3.0-blue.svg)](https://www.npmjs.com/package/cmatrix)
+[![npm](https://img.shields.io/badge/npm-0.3.1-blue.svg)](https://www.npmjs.com/package/cmatrix)
 [![LICENSE MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jcubic/cmatrix/blob/master/LICENSE)
 
 [Matrix animation effect in JavaScript using Canvas](https://jcubic.github.io/cmatrix/)
@@ -58,6 +58,9 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 * `matrix.range(start_number, end_number)` - returns characters created from given range. Use `matrix.range(0x30A1, 0x30F6)` for [Katagana](https://en.wikipedia.org/wiki/Katakana) characters and `matrix.range(0x3041, 0x3096)` for [Hiragana](https://en.wikipedia.org/wiki/Hiragana), they look nice as matrix rain.
 
 ## Changelog
+### 0.3.1
+* fix clearing state on subsequent calls to matrix [#2](https://github.com/jcubic/cmatrix/issues/2)
+
 ### 0.3.0
 * add support for custom font
 
@@ -72,5 +75,5 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 * Custom matrix font taken from [Realistic Matrix effect](https://github.com/Rezmason/matrix).
 
 ## License
-Copyright (C) 2022 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
+Copyright (C) 2021-2023 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
 Released under MIT License

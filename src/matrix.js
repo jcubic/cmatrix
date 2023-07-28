@@ -1,7 +1,7 @@
 /**
  * Matrix effect on a Canvas https://jcubic.github.io/cmatrix/
  *
- * Copyright (c) 2021-2022 Jakub T. Jankiewicz <https://jcubic.pl/me>
+ * Copyright (c) 2021-2023 Jakub T. Jankiewicz <https://jcubic.pl/me>
  * Released under MIT license
  *
  * The code was started at this Codepen https://codepen.io/jcubic/pen/rNeNwgB
@@ -23,6 +23,11 @@ class Matrix {
     background
   } = {}) {
     this._canvas = canvas;
+    if (this._canvas._matrix) {
+      this._canvas._matrix.stop();
+      this._canvas._matrix.clear();
+    }
+    this._canvas._matrix = this;
     this._ctx = canvas.getContext('2d');
     this._font_size = font_size;
     this._drops = [];
@@ -43,10 +48,10 @@ class Matrix {
     this._run = true;
     const self = this;
     (function loop() {
-      if (frames++ % 2 === 0) {
-        self.render(); // slower render
-      }
       if (self._run) {
+        if (frames++ % 2 === 0) {
+          self.render(); // slower render
+        }
         requestAnimationFrame(loop);
       }
     })();
@@ -89,8 +94,6 @@ class Matrix {
     }
   }
 }
-
-
 
 // ---------------------------------------------------------------
 // :: Init code
