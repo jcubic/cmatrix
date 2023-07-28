@@ -10,28 +10,13 @@
  }
 </style>
 <canvas id="canvas"></canvas>
-<button id="theme">mode</button>
 <script type="module">
-import matrix from "./src/matrix";
-
-var canvas = document.getElementById("canvas");
-var mode = true;
-var someFunction = function (event) {
-    //clear canvas before drawing
-    canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-    console.log('run');
-    matrix(canvas, {
-        chars: ["0", "1"],
-        color: mode ? "#0F0" : "#000",
-        background:
-            mode
-                ? "rgba(51, 65, 84, 0.09)"
-                : "rgba(255,255,255, 0.05)",
-        exit: true,
-        font_size: 20,
-    });
-    mode = !mode;
-};
-someFunction();
-theme.addEventListener("click", someFunction, false);
+ import matrix from './dist/matrix.mjs';
+ matrix(canvas, {
+     chars: ['0', '1'],
+     color: '#000',
+     background: 'rgba(255,255,255, 0.05)',
+     exit: false,
+     font_size: 20
+ })
 </script>
