@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
 <body>
 <style>
  body, canvas {
@@ -25,14 +28,17 @@
 
      // '6' don't have its glyph
      const digits = matrix.range(0x0030, 0x0035).concat(matrix.range(0x0037, 0x0039));
-  
+
      const chars = digits.concat(make_chars(...nums));
-  
+
      matrix(canvas, {
          exit: false,
          chars,
          font: 'matrix',
-         font_size: 20
+         font_size: 20,
+         init(matrix) {
+             canvas.addEventListener('click', () => matrix.fullscreen());
+         }
      });
  });
 </script>

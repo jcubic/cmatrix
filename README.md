@@ -52,12 +52,27 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 * `color` - default color - default is `#0f0`.
 * `background` - by default it's set `rgba(0, 0, 0, 0.05)` alpha is required for the effect to look good.
 * `font_size` - number the default is 14.
+* `init: (matrix) => void` - callback function that is executed with single argument that is instance of internal Matrix object.
 * `font` - name of the font (default `monospace`).
+
+## Methods
+* `start()` - start the animation
+* `stop()` - stop the animation
+* `resize(width, height)` - resize the canvas to the given width and height
+* `clear()` - clear the canvas
+* `reset()` - reset the internal state the effect
+* `fullscreen()` - toggle fullscreen
+* `render()` - render single frame using internal state
 
 ## Static methods
 * `matrix.range(start_number, end_number)` - returns characters created from given range. Use `matrix.range(0x30A1, 0x30F6)` for [Katagana](https://en.wikipedia.org/wiki/Katakana) characters and `matrix.range(0x3041, 0x3096)` for [Hiragana](https://en.wikipedia.org/wiki/Hiragana), they look nice as matrix rain.
 
 ## Changelog
+### 0.4.0
+* add `fullscreen()` method
+* add init option and expose Matrix class instance
+* fix flash or distorted rain when changing orientation on mobile
+
 ### 0.3.1
 * fix clearing state on subsequent calls to matrix [#2](https://github.com/jcubic/cmatrix/issues/2)
 

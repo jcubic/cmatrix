@@ -67,6 +67,7 @@ class Matrix {
   resize(width, height) {
     this._width = width;
     this._height = height;
+    this.clear();
     this._canvas.width = width;
     setTimeout(() => {
       this._canvas.height = height;
@@ -79,6 +80,13 @@ class Matrix {
     this._ctx.fillRect(0, 0, this._width, this._height);
     this._ctx.fillStyle = this._color;
     this._ctx.font = this._font_size + "px " + this._font;
+  }
+  fullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
   }
   render() {
     this.clear();
@@ -99,11 +107,12 @@ class Matrix {
 // :: Init code
 // ---------------------------------------------------------------
 function matrix(canvas, { chars = null,
-                                         font_size = 14,
-                                         exit = true,
-                                         font = 'monospace',
-                                         color = '#0F0',
-                                         background = 'rgba(0, 0,0,0.05)'} = {}) {
+                          font_size = 14,
+                          exit = true,
+                          font = 'monospace',
+                          color = '#0F0',
+                          init = () => {},
+                          background = 'rgba(0, 0,0,0.05)'} = {}) {
 
   const matrix = new Matrix(canvas, {
     font_size: font_size,
@@ -115,12 +124,18 @@ function matrix(canvas, { chars = null,
     height: height()
   });
 
-  window.addEventListener('resize', e => {
-    matrix.resize(width(), height());
-  });
+  const resize = () => matrix.resize(width(), height());
+
+  window.addEventListener('resize', resize);
+
+  if (screen?.orientation) {
+    screen.orientation.addEventListener('change', resize);
+  }
 
   canvas.classList.add('running');
+
   matrix.start();
+  init(matrix);
 
   if (exit) {
     return new Promise(function(resolve) {
@@ -129,6 +144,11 @@ function matrix(canvas, { chars = null,
         if (key === 'q' || key === 'escape') {
           matrix.stop();
           canvas.classList.remove('running');
+          window.removeEventListener('resize', resize);
+          resizeObserver.unobserve(canvas);
+          if (screen?.orientation) {
+            screen.orientation.removeEventListener('change', resize);
+          }
           setTimeout(resolve, 0);
         }
       });
