@@ -74,7 +74,8 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 ## Changelog
 ### 0.4.0
 * add `fullscreen()` method
-* add `mount` and `unmount` option and expose Matrix class instance
+* add `mount` and `unmount` option
+* expose Matrix class instance
 * fix flash of distorted rain when changing orientation on mobile
 
 ### 0.3.1
