@@ -114,7 +114,8 @@ function matrix(canvas, { chars = null,
                           exit = true,
                           font = 'monospace',
                           color = '#0F0',
-                          init = () => {},
+                          mount = () => {},
+                          unmount = () => {},
                           background = 'rgba(0, 0,0,0.05)'} = {}) {
 
   const matrix = new Matrix(canvas, {
@@ -138,7 +139,7 @@ function matrix(canvas, { chars = null,
   canvas.classList.add('running');
 
   matrix.start();
-  init(matrix);
+  mount(matrix);
 
   if (exit) {
     return new Promise(function(resolve) {
@@ -152,7 +153,10 @@ function matrix(canvas, { chars = null,
           if (screen?.orientation) {
             screen.orientation.removeEventListener('change', resize);
           }
-          setTimeout(resolve, 0);
+          setTimeout(() => {
+            unmount(matrix);
+            resolve();
+          }, 0);
         }
       });
     });

@@ -14,10 +14,18 @@ canvas {
 </style>
 <canvas id="canvas"></canvas>
 <script src="dist/matrix.js"></script>
-<script >
-(function run() {
-    return matrix(canvas, {
-        font_size: 20
-    }).then(run);
-})();
+<script>
+ (function run() {
+   let click_handler;
+   return matrix(canvas, {
+     font_size: 20,
+     mount(matrix) {
+       click_handler = () => matrix.fullscreen();
+       canvas.addEventListener('click', click_handler);
+     },
+     unmount() {
+       canvas.removeEventListener('click', click_handler);
+     }
+   }).then(run);
+ })();
 </script>

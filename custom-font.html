@@ -31,13 +31,18 @@
 
      const chars = digits.concat(make_chars(...nums));
 
+     let click_handler;
      matrix(canvas, {
          exit: false,
          chars,
          font: 'matrix',
          font_size: 20,
-         init(matrix) {
-             canvas.addEventListener('click', () => matrix.fullscreen());
+         mount(matrix) {
+             click_handler = () => matrix.fullscreen();
+             canvas.addEventListener('click', click_handler);
+         },
+         unmount() {
+             canvas.removeEventListener('click', click_handler);
          }
      });
  });

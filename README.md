@@ -52,10 +52,11 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 * `color` - default color - default is `#0f0`.
 * `background` - by default it's set `rgba(0, 0, 0, 0.05)` alpha is required for the effect to look good.
 * `font_size` - number the default is 14.
-* `init: (matrix) => void` - callback function that is executed with single argument that is instance of internal Matrix object.
+* `mount: (matrix) => void` - callback function which is executed with single argument that is instance of internal Matrix object when initializing.
+* `unmount: (matrix) => void` - callback function which is executed when Matrix effect is destroyed.
 * `font` - name of the font (default `monospace`).
 
-## Methods
+## Matrix instance methods
 * `start()` - start the animation
 * `stop()` - stop the animation
 * `resize(width, height)` - resize the canvas to the given width and height
@@ -70,7 +71,7 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 ## Changelog
 ### 0.4.0
 * add `fullscreen()` method
-* add init option and expose Matrix class instance
+* add `mount` and `unmount` option and expose Matrix class instance
 * fix flash or distorted rain when changing orientation on mobile
 
 ### 0.3.1

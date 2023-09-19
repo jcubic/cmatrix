@@ -15,11 +15,19 @@
 <canvas id="canvas"></canvas>
 <script type="module">
  import matrix from './dist/matrix.mjs';
+ let click_handler;
  matrix(canvas, {
      chars: ['0', '1'],
      color: '#000',
      background: 'rgba(255,255,255, 0.05)',
      exit: false,
-     font_size: 20
+     font_size: 20,
+     mount(matrix) {
+       click_handler = () => matrix.fullscreen();
+       canvas.addEventListener('click', click_handler);
+     },
+     unmount() {
+       canvas.removeEventListener('click', click_handler);
+     }
  })
 </script>
