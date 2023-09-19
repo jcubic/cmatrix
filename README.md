@@ -72,7 +72,7 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 ### 0.4.0
 * add `fullscreen()` method
 * add `mount` and `unmount` option and expose Matrix class instance
-* fix flash or distorted rain when changing orientation on mobile
+* fix flash of distorted rain when changing orientation on mobile
 
 ### 0.3.1
 * fix clearing state on subsequent calls to matrix [#2](https://github.com/jcubic/cmatrix/issues/2)
