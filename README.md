@@ -5,6 +5,9 @@
 
 [Matrix animation effect in JavaScript using Canvas](https://jcubic.github.io/cmatrix/)
 
+
+![Screenshot of a browser window with Matrix rain effect, green letters that look like Japanese on black background](https://github.com/jcubic/cmatrix/blob/master/assets/screenshot.png?raw=true)
+
 ## Installation
 
 ```
