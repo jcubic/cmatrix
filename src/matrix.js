@@ -44,6 +44,9 @@ class Matrix {
     this._ctx.fillText(char, x, y);
   }
   start() {
+    if (this._run) {
+      return;
+    }
     let frames = 0;
     this._run = true;
     const self = this;
