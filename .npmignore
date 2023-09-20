@@ -1,5 +1,7 @@
 *.html
 rollup.config.js
+.gitattributes
 src
+assets
 .htaccess
 *~
