@@ -113,8 +113,8 @@ function matrix(canvas, { chars = null,
                           font_size = 14,
                           exit = true,
                           font = 'monospace',
-                          width = width(),
-                          height = height(),
+                          width = default_width(),
+                          height = default_height(),
                           resize = true,
                           color = '#0F0',
                           mount = () => {},
@@ -193,11 +193,11 @@ function rnd(array) {
 }
 
 // ---------------------------------------------------------------
-function width() {
+function default_width() {
   return window.innerWidth;
 }
 
 // ---------------------------------------------------------------
-function height() {
+function default_height() {
   return window.innerHeight;
 }
