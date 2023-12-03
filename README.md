@@ -53,6 +53,9 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 * `exit` - by default matrix return a promise that resolves when it ends (when someone press `q` or `ESC`)
            this option when set to false will disable this and the function return undefined.
 * `color` - default color - default is `#0f0`.
+* `width` - width of the Canvas, default full screen.
+* `height` - height of the Canvas, default full screen.
+* `resize` - if the size is constant (you specify the width and height options) you should set it to false.
 * `background` - by default it's set `rgba(0, 0, 0, 0.05)` alpha is required for the effect to look good.
 * `font_size` - number the default is 14.
 * `mount: (matrix) => void` - callback function which is executed with single argument that is instance of internal Matrix object when initializing.
@@ -70,8 +73,13 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 
 ## Static methods
 * `matrix.range(start_number, end_number)` - returns characters created from given range. Use `matrix.range(0x30A1, 0x30F6)` for [Katagana](https://en.wikipedia.org/wiki/Katakana) characters and `matrix.range(0x3041, 0x3096)` for [Hiragana](https://en.wikipedia.org/wiki/Hiragana), they look nice as matrix rain.
+* `matrix.custom_chars` - array containing all characters for custom matrix font in this repository.
 
 ## Changelog
+### 0.5.0
+* add `width`, `heigth`, `resize` options
+* add `matrix.custom_chars` that contains all characters for for custom matrix font.
+
 ### 0.4.0
 * add `fullscreen()` method
 * add `mount` and `unmount` option
