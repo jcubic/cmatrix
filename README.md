@@ -44,7 +44,7 @@ matrix(canvasElement, {
 ```
 
 The matrix function return a Promise that is resolved when exit.
-By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable ending the animation.
+By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable ending of the animation.
 
 [Repo Link](https://github.com/jcubic/cmatrix)
 
