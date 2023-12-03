@@ -1,6 +1,6 @@
 # CMatrix - Matrix effect in JavaScript
 
-[![npm](https://img.shields.io/badge/npm-0.4.0-blue.svg)](https://www.npmjs.com/package/cmatrix)
+[![npm](https://img.shields.io/badge/npm-0.5.0-blue.svg)](https://www.npmjs.com/package/cmatrix)
 [![LICENSE MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jcubic/cmatrix/blob/master/LICENSE)
 
 [Matrix animation effect in JavaScript using Canvas](https://jcubic.github.io/cmatrix/)

@@ -1,6 +1,6 @@
 {
   "name": "cmatrix",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Matrix effect animation on a canvas",
   "main": "dist/matrix.js",
   "jsnext:main": "dist/matrix.mjs",
