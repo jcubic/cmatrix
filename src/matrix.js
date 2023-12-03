@@ -113,6 +113,9 @@ function matrix(canvas, { chars = null,
                           font_size = 14,
                           exit = true,
                           font = 'monospace',
+                          width = width(),
+                          height = height(),
+                          resize = true,
                           color = '#0F0',
                           mount = () => {},
                           unmount = () => {},
@@ -124,16 +127,20 @@ function matrix(canvas, { chars = null,
     font,
     color,
     background,
-    width: width(),
-    height: height()
+    width,
+    height
   });
 
-  const resize = () => matrix.resize(width(), height());
+  let resize_handler;
 
-  window.addEventListener('resize', resize);
+  if (resize) {
+    resize_handler = () => matrix.resize(width(), height());
 
-  if (screen?.orientation) {
-    screen.orientation.addEventListener('change', resize);
+    window.addEventListener('resize', resize_handler);
+
+    if (screen?.orientation) {
+      screen.orientation.addEventListener('change', resize_handler);
+    }
   }
 
   canvas.classList.add('running');
@@ -148,10 +155,11 @@ function matrix(canvas, { chars = null,
         if (key === 'q' || key === 'escape') {
           matrix.stop();
           canvas.classList.remove('running');
-          window.removeEventListener('resize', resize);
-          resizeObserver.unobserve(canvas);
-          if (screen?.orientation) {
-            screen.orientation.removeEventListener('change', resize);
+          if (resize_handler) {
+            window.removeEventListener('resize', resize_handler);
+            if (screen?.orientation) {
+              screen.orientation.removeEventListener('change', resize_handler);
+            }
           }
           setTimeout(() => {
             unmount(matrix);
