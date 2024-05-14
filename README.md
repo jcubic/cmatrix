@@ -1,6 +1,6 @@
 # CMatrix - Matrix effect in JavaScript
 
-[![npm version](https://img.shields.io/badge/npm-0.5.0-blue.svg)](https://www.npmjs.com/package/cmatrix)
+[![npm version](https://img.shields.io/badge/npm-0.5.1-blue.svg)](https://www.npmjs.com/package/cmatrix)
 [![LICENSE MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jcubic/cmatrix/blob/master/LICENSE)
 [![jsDelivr CDN download counter](https://data.jsdelivr.com/v1/package/npm/cmatrix/badge)](https://www.jsdelivr.com/package/npm/cmatrix)
 
@@ -77,6 +77,9 @@ By default, `q` and `ESC` exit from the effect. Use `exit: false` to disable end
 * `matrix.custom_chars` - array containing all characters for custom matrix font in this repository.
 
 ## Changelog
+### 0.5.1
+* fix resize
+
 ### 0.5.0
 * add `width`, `heigth`, `resize` options
 * add `matrix.custom_chars` that contains all characters for for custom matrix font.

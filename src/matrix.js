@@ -113,8 +113,8 @@ function matrix(canvas, { chars = null,
                           font_size = 14,
                           exit = true,
                           font = 'monospace',
-                          width = default_width(),
-                          height = default_height(),
+                          width = null,
+                          height = null,
                           resize = true,
                           color = '#0F0',
                           mount = () => {},
@@ -127,14 +127,14 @@ function matrix(canvas, { chars = null,
     font,
     color,
     background,
-    width,
-    height
+    width: width ?? default_width(),
+    height: height ?? default_height()
   });
 
   let resize_handler;
 
   if (resize) {
-    resize_handler = () => matrix.resize(width(), height());
+    resize_handler = () => matrix.resize(default_width(), default_height());
 
     window.addEventListener('resize', resize_handler);
 
