@@ -196,7 +196,7 @@ function rnd(array) {
 
 // ---------------------------------------------------------------
 function default_width() {
-  return window.innerWidth;
+  return document.documentElement.clientWidth;
 }
 
 // ---------------------------------------------------------------
